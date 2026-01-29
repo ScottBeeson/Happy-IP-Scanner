@@ -1,0 +1,12 @@
+node_modules/
+dist/
+release/
+build/
+*.log
+debug-log.txt
+scanner-debug.log
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db

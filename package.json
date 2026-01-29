@@ -1,0 +1,24 @@
+{
+  "name": "happy-ip-scanner",
+  "version": "1.0.0",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "electron",
+    "ip-scanner",
+    "network",
+    "windows"
+  ],
+  "author": "Scott Beeson",
+  "license": "MIT",
+  "description": "A simple, modern IP scanning desktop application for Windows.",
+  "devDependencies": {
+    "electron": "^40.0.0"
+  },
+  "dependencies": {
+    "ip": "^2.0.1"
+  }
+}

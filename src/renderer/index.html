@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';">
+    <title>Happy IP Scanner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="app-header">
+        <div class="location-group">
+            <button id="openLocationManagerBtn" class="btn btn-icon" title="Manage Locations">
+                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <path d="M10 6.5h4"></path>
+                    <path d="M6.5 10v8a2 2 0 0 0 2 2h5.5"></path>
+                </svg>
+            </button>
+            <select id="locationSelect" class="location-select"></select>
+        </div>
+        <div class="input-group">
+            <input type="text" id="ipRangeInput" placeholder="192.168.1.1 - 192.168.1.254" value="192.168.1.0/24">
+        </div>
+        <div class="controls">
+            <button id="startScanBtn" class="btn btn-primary">Start Scan</button>
+            <div class="toggle-group">
+                <input type="checkbox" id="hideOffline" class="toggle-input" checked>
+                <label for="hideOffline" class="toggle-label" style="margin-right: 1rem;">Hide Offline</label>
+
+                <input type="checkbox" id="showUnknownOnly" class="toggle-input">
+                <label for="showUnknownOnly" class="toggle-label">Show Unknown Only</label>
+            </div>
+        </div>
+    </header>
+
+    <!-- Location Manager Modal -->
+    <div id="locationManagerModal" class="modal">
+        <div class="modal-content location-manager-content">
+            <span class="close-modal">&times;</span>
+
+            <div class="manager-layout">
+                <!-- Sidebar -->
+                <aside class="manager-sidebar">
+                    <div class="sidebar-header">
+                        <h3>Locations</h3>
+                        <button id="managerAddLocationBtn" class="btn-small" title="Create New Location">+</button>
+                    </div>
+                    <ul id="locationList" class="location-list">
+                        <!-- List items injected here -->
+                    </ul>
+                </aside>
+
+                <!-- Details Area -->
+                <section class="manager-details">
+                    <div id="managerEmptyState" class="manager-empty">
+                        <p>Select a location to view details</p>
+                    </div>
+
+                    <div id="managerForm" class="manager-form" style="display:none;">
+                        <div class="form-header">
+                            <h2 id="editLocationTitle">Edit Location</h2>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="editLocationName">Name</label>
+                                <input type="text" id="editLocationName">
+                            </div>
+                            <div class="form-group">
+                                <label for="editLocationRange">Address Range</label>
+                                <input type="text" id="editLocationRange">
+                            </div>
+                        </div>
+
+                        <div class="known-devices-section">
+                            <div class="section-header">
+                                <h3>Known Devices</h3>
+                                <span id="knownCount" class="badge">0</span>
+                            </div>
+                            <div class="known-list-container">
+                                <table class="known-table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 50px;"></th>
+                                            <th style="width: 140px;">IP Address</th>
+                                            <th>Note</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="knownDevicesList">
+                                        <!-- Devices injected here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button id="deleteLocationBtn" class="btn btn-danger-outline">Delete Location</button>
+                            <div class="spacer"></div>
+                            <button id="saveManagerBtn" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <main class="results-container">
+        <div class="table-container">
+            <table id="resultsTable">
+                <thead>
+                    <tr>
+                        <th style="width: 60px;"></th>
+                        <th style="width: 140px;">IP Address</th>
+                        <th style="width: 200px;">Hostname</th>
+                        <th>Note</th>
+                        <th style="width: 100px;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsBody">
+                    <!-- Results will be injected here -->
+                </tbody>
+            </table>
+
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        <div class="progress-bar-container">
+            <div id="progressBar" class="progress-bar"></div>
+        </div>
+        <div id="statusText" class="status-text">Ready</div>
+    </footer>
+
+    <script src="renderer.js"></script>
+</body>
+
+</html>
