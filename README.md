@@ -7,7 +7,6 @@ Happy IP Scanner is a simple, modern desktop application for Windows built with 
 - **Fast Network Scanning**: Quickly identify active devices on your local network.
 - **Known Devices**: Mark trusted devices to easily spot new or unknown hardware.
 - **Modern UI**: Clean, responsive interface designed for Windows.
-- **Export**: (Planned) Export results for analysis.
 
 ## Getting Started
 
